@@ -6,7 +6,6 @@
 package AccesosDatos;
 
 import java.sql.*;
-import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -30,9 +29,12 @@ public class Conexion {
     public static Connection getConexion(){
         if (conexion==null) {
              try {
-                 Class.forName("org.mariabd.jdbc.Driver");
+                 Class.forName("org.mariadb.jdbc.Driver");
                  
-                conexion = DriverManager.getConnection(url+db+usuario+password);
+                conexion= DriverManager.getConnection(url+db + "?useLegacyDatetimeCode=false&serverTimezone=UTC" +
+                "&user=" + usuario + "&password=" + password);
+                 //conexion = DriverManager.getConnection(url+db+usuario+password);
+                 JOptionPane.showMessageDialog(null, "Conectado");
                 
             } catch (SQLException e) {
                  JOptionPane.showMessageDialog(null, "Error al conectar a la BD "+e);
