@@ -45,7 +45,7 @@ public class MateriaData {
     }
 
    public Materia buscarMateria(int id){
-        String sql="SELECT nombre, año FROM `materia` WHERE id_materia=1 AND estado=1";
+        String sql="SELECT nombre, año FROM `materia` WHERE id_materia=? AND estado=1";
         Materia materia=null;
         try {
             PreparedStatement ps=con.prepareStatement(sql);
@@ -118,7 +118,8 @@ public class MateriaData {
    materia.setNombre(rs.getString("nombre"));
    materia.setAño(rs.getInt("año"));
    materias.add(materia);
-   } ps.close();
+   } 
+   ps.close();
    }catch(SQLException e){
     JOptionPane.showMessageDialog(null, "No se puedo acceder a la tabla materia");
    }
