@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author Lucas
  */
-public class AlumnoData {
+    public class AlumnoData {
     private Connection con=null;
 
     public AlumnoData() {
