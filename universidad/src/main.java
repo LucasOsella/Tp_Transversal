@@ -35,6 +35,12 @@ public class main {
 //          ad.modificarAlumno(alm2);
             ad.eliminarAlumno(alm2);
         
+     /* Alumno juan = new Alumno (12312312,"Ramirez","Juan",LocalDate.of(1999,04, 13),true);
+      AlumnoData alu = new AlumnoData();  
+      alu.guardarAlumno(juan); */
+      Alumno rodrigo= new Alumno(23707564,"Gil","Ramiro",LocalDate.of(2000, 03, 25),true);
+      AlumnoData alu1 = new AlumnoData();
+      alu1.guardarAlumno(rodrigo);
     }
     
 }
