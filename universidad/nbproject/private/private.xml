@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/Users/Lucas/Documents/GitHub/TrabajoAulico/Tp_Transversal/universidad/src/AccesosDatos/AlumnoData.java</file>
             <file>file:/C:/Users/Lucas/Documents/GitHub/TrabajoAulico/Tp_Transversal/universidad/src/Entidades/Alumno.java</file>
             <file>file:/C:/Users/Lucas/Documents/GitHub/TrabajoAulico/Tp_Transversal/universidad/src/Vistas/VistaPrincipal.java</file>
@@ -12,6 +13,15 @@
             <file>file:/C:/Users/Lucas/Documents/GitHub/TrabajoAulico/Tp_Transversal/universidad/src/AccesosDatos/InscripcionData.java</file>
             <file>file:/C:/Users/Lucas/Documents/GitHub/TrabajoAulico/Tp_Transversal/universidad/src/main.java</file>
             <file>file:/C:/Users/Lucas/Documents/GitHub/TrabajoAulico/Tp_Transversal/universidad/src/Entidades/Inscripcion.java</file>
+=======
+            <file>file:/C:/Users/Juan%20fua%20el%20Diego/Documents/GitHub/Tp_Transversal/universidad/src/Vistas/VistaPrincipal.java</file>
+            <file>file:/C:/Users/Juan%20fua%20el%20Diego/Documents/GitHub/Tp_Transversal/universidad/src/Vistas/ListadoMateriaVista.java</file>
+            <file>file:/C:/Users/Juan%20fua%20el%20Diego/Documents/GitHub/Tp_Transversal/universidad/src/AccesosDatos/MateriaData.java</file>
+            <file>file:/C:/Users/Juan%20fua%20el%20Diego/Documents/GitHub/Tp_Transversal/universidad/src/AccesosDatos/AlumnoData.java</file>
+            <file>file:/C:/Users/Juan%20fua%20el%20Diego/Documents/GitHub/Tp_Transversal/universidad/src/Entidades/Materia.java</file>
+            <file>file:/C:/Users/Juan%20fua%20el%20Diego/Documents/GitHub/Tp_Transversal/universidad/src/AccesosDatos/InscripcionData.java</file>
+            <file>file:/C:/Users/Juan%20fua%20el%20Diego/Documents/GitHub/Tp_Transversal/universidad/src/Vistas/NotasVista.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
