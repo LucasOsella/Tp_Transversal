@@ -5,12 +5,15 @@
  */
 package Vistas;
 
+import Entidades.Materia;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Juan fua el Diego
  */
 public class VistaPrincipal extends javax.swing.JFrame {
-
     /**
      * Creates new form VistaPrincipal
      */
