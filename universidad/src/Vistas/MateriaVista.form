@@ -40,14 +40,6 @@
               </Group>
               <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jRadioButtonEstado" min="-2" max="-2" attributes="0"/>
-                          <Component id="JTFnombre" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
-                          <Component id="JTFaño" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -56,6 +48,14 @@
                       <EmptySpace pref="153" max="32767" attributes="0"/>
                       <Component id="jButtonBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="JTFnombre" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="JTFaño" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="jCheckEstado" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -84,12 +84,12 @@
                   <Component id="jLabelAño" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="JTFaño" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelEstado" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jRadioButtonEstado" alignment="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckEstado" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="101" max="32767" attributes="0"/>
+              <EmptySpace pref="102" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -138,26 +138,41 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Nuevo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNuevoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEliminar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonGuardar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonSalir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonBuscar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuscarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFcodigo">
       <Events>
@@ -168,8 +183,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="JTFa&#xf1;o">
     </Component>
-    <Component class="javax.swing.JRadioButton" name="jRadioButtonEstado">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -177,6 +190,11 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Materia"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckEstado">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckEstadoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -17,12 +17,12 @@ import javax.swing.JOptionPane;
  *
  * @author Juan fua el Diego
  */
-public class Alumno extends javax.swing.JInternalFrame {
+public class AlumnoVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Alumno
      */
-    public Alumno() {
+    public AlumnoVista() {
         initComponents();
     }
 

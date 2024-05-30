@@ -9,12 +9,12 @@ package Vistas;
  *
  * @author Juan fua el Diego
  */
-public class Notas extends javax.swing.JInternalFrame {
+public class NotasVista extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Notas
      */
-    public Notas() {
+    public NotasVista() {
         initComponents();
     }
 

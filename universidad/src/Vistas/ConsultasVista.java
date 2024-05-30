@@ -10,10 +10,10 @@ package Vistas;
  *
  * @author Juan fua el Diego
  */
-public class Consultas extends javax.swing.JInternalFrame {
+public class ConsultasVista extends javax.swing.JInternalFrame {
 
     /** Creates new form AlumnosPorMateria */
-    public Consultas() {
+    public ConsultasVista() {
         initComponents();
     }
 
