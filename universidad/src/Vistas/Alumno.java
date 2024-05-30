@@ -5,6 +5,14 @@
  */
 package Vistas;
 
+import AccesosDatos.*;
+import Entidades.*;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAccessor;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan fua el Diego
@@ -27,6 +35,7 @@ public class Alumno extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         jLabelDocumento = new javax.swing.JLabel();
         jLabelApellido = new javax.swing.JLabel();
         jLabelNombre = new javax.swing.JLabel();
@@ -35,13 +44,16 @@ public class Alumno extends javax.swing.JInternalFrame {
         JTFdocumento = new javax.swing.JTextField();
         JTFapellido = new javax.swing.JTextField();
         JTFnombre = new javax.swing.JTextField();
-        JRadioButtonEstado = new javax.swing.JRadioButton();
         jButtonNuevo = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
         jButtonGuardar = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
         jButtonBuscar = new javax.swing.JButton();
+        jDfechaNac = new com.toedter.calendar.JDateChooser();
+        jCestado = new javax.swing.JCheckBox();
+
+        jToggleButton1.setText("jToggleButton1");
 
         jLabelDocumento.setText("Documento");
 
@@ -65,19 +77,33 @@ public class Alumno extends javax.swing.JInternalFrame {
             }
         });
 
-        JRadioButtonEstado.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNuevo.setText("Nuevo");
+        jButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JRadioButtonEstadoActionPerformed(evt);
+                jButtonNuevoActionPerformed(evt);
             }
         });
 
-        jButtonNuevo.setText("Nuevo");
-
         jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
 
         jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
 
         jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
 
         Titulo.setFont(new java.awt.Font("Microsoft JhengHei", 1, 18)); // NOI18N
         Titulo.setText("Alumno");
@@ -94,27 +120,11 @@ public class Alumno extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonNuevo)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButtonEliminar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelFechaNac)
-                            .addComponent(jLabelApellido)
-                            .addComponent(jLabelDocumento)
-                            .addComponent(jLabelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelNombre))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(JTFapellido, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTFdocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JRadioButtonEstado))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jButtonNuevo)
+                .addGap(35, 35, 35)
+                .addComponent(jButtonEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonGuardar)
@@ -125,8 +135,25 @@ public class Alumno extends javax.swing.JInternalFrame {
                         .addComponent(jButtonBuscar)
                         .addGap(22, 22, 22))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(234, 234, 234)
-                .addComponent(Titulo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(Titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelFechaNac)
+                            .addComponent(jLabelApellido)
+                            .addComponent(jLabelDocumento)
+                            .addComponent(jLabelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelNombre))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(JTFapellido, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(JTFdocumento, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(JTFnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(jDfechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCestado))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,13 +174,15 @@ public class Alumno extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
                     .addComponent(JTFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEstado)
-                    .addComponent(JRadioButtonEstado))
-                .addGap(44, 44, 44)
-                .addComponent(jLabelFechaNac)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                    .addComponent(jCestado))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelFechaNac)
+                    .addComponent(jDfechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNuevo)
                     .addComponent(jButtonSalir)
@@ -170,20 +199,56 @@ public class Alumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_JTFdocumentoActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        // TODO add your handling code here:
+         AlumnoData almD= new AlumnoData();
+         int dni=Integer.parseInt(JTFdocumento.getText());
+         Entidades.Alumno alm=almD.buscarAlumnoPorDni(dni);
+        JTFapellido.setText(alm.getNombre()); 
+        JTFnombre.setText(alm.getNombre());
+        jCestado.setSelected(alm.isEstado());
     }//GEN-LAST:event_jButtonBuscarActionPerformed
-
-    private void JRadioButtonEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRadioButtonEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JRadioButtonEstadoActionPerformed
 
     private void JTFnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFnombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFnombreActionPerformed
 
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+       AlumnoData almD= new AlumnoData();
+       int dni=Integer.parseInt(JTFdocumento.getText());
+       String nombre=JTFnombre.getText();
+       String apellido=JTFapellido.getText();
+       boolean estado=jCestado.isSelected();
+       LocalDate fecha= jDfechaNac.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+       Entidades.Alumno alm=new Entidades.Alumno(dni,apellido,nombre,fecha,estado);
+ 
+       almD.guardarAlumno(alm);
+       
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
+        limpiar();
+    }//GEN-LAST:event_jButtonNuevoActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        // TODO add your handling code here:
+       AlumnoData almD=new AlumnoData();
+       int dni=Integer.parseInt(JTFdocumento.getText());
+       
+       almD.eliminarAlumno(almD.buscarAlumnoPorDni(dni).getId_alumno());
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void limpiar(){
+    JTFapellido.setText("");
+    JTFdocumento.setText("");
+    JTFnombre.setText("");
+    jCestado.setSelected(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton JRadioButtonEstado;
     private javax.swing.JTextField JTFapellido;
     private javax.swing.JTextField JTFdocumento;
     private javax.swing.JTextField JTFnombre;
@@ -193,10 +258,13 @@ public class Alumno extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonNuevo;
     private javax.swing.JButton jButtonSalir;
+    private javax.swing.JCheckBox jCestado;
+    private com.toedter.calendar.JDateChooser jDfechaNac;
     private javax.swing.JLabel jLabelApellido;
     private javax.swing.JLabel jLabelDocumento;
     private javax.swing.JLabel jLabelEstado;
     private javax.swing.JLabel jLabelFechaNac;
     private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

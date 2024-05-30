@@ -77,6 +77,34 @@ import javax.swing.JOptionPane;
         return alumno;
     }
     
+    public Alumno buscarAlumnoPorDni(int dni) {
+             Alumno alumno = null;
+             String sql = "SELECT id_alumno, dni, apellido, nombre, fecha_nacimiento FROM alumno WHERE dni=? AND estado = 1";
+            PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1,dni );
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+            alumno=new Alumno();
+            alumno.setId_alumno(rs.getInt("id_alumno"));
+            alumno.setDni(rs.getInt("dni"));
+            alumno.setApellido(rs.getString("apellido"));
+            alumno.setNombre(rs.getString("nombre"));
+            alumno.setFecha_nacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+            alumno.setEstado(true);
+
+            } else {
+             JOptionPane.showMessageDialog(null, "No existe el alumno");
+            }
+            ps.close();
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno "+ex.getMessage());
+            }
+        return alumno;
+        }
+    
     
     public List<Alumno> listarAlumno(){
         List<Alumno> alumnos =new ArrayList<>();
@@ -123,11 +151,11 @@ import javax.swing.JOptionPane;
     
     }
     
-    public void eliminarAlumno(Alumno alumno){
+    public void eliminarAlumno(int id){
         String sql= "UPDATE alumno SET estado=0 WHERE id_alumno = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, alumno.getId_alumno());
+            ps.setInt(1, id);
           int fila = ps.executeUpdate();
             if (fila==1) {
                 JOptionPane.showMessageDialog(null, "Se elimino un alumno");
