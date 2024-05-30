@@ -19,8 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class InscripcionData {
     private Connection con =null;
-    private MateriaData materia;
-    private AlumnoData alumno;
+    private MateriaData materia=new MateriaData();
+    private AlumnoData alumno= new AlumnoData();
     
     public InscripcionData(){
         con=Conexion.getConexion();
