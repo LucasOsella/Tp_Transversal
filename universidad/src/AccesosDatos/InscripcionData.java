@@ -92,8 +92,8 @@ public class InscripcionData {
     public List<Materia> obtenerMateriasCursadas(int id){  //OBTENER MATERIAS CURSADAS.  
         List<Materia> materias = new ArrayList<Materia>();
         try {
-        String sql = "SELECT inscripcion.id_materia, nombre, año FROM inscripcion ,"
-                + "materia WHERE inscripcion.id_materia= materia.id_materia/n"
+        String sql = "SELECT inscripcion.id_materia, nombre, año, estado FROM inscripcion ,"
+                + "materia WHERE inscripcion.id_materia= materia.id_materia "
                 + "AND inscripcion.id_alumno = ?;";
         
             PreparedStatement ps = con.prepareStatement(sql);
@@ -105,11 +105,13 @@ public class InscripcionData {
                 materia.setId_materia(rs.getInt("id_materia"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAño(rs.getInt("año"));
+                materia.setEstado(rs.getBoolean("estado"));
                 materias.add(materia);
             }
             ps.close();
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla inscripcion.");
+           ex.printStackTrace();
         }
         return materias;
     } 
@@ -127,6 +129,7 @@ public class InscripcionData {
              mate.setId_materia(rs.getInt("id_materia"));
              mate.setNombre(rs.getString("nombre"));
              mate.setAño(rs.getInt("año"));
+             mate.setEstado(rs.getBoolean("estado"));
              materias.add(mate);
             }
             ps.close();

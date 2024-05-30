@@ -159,32 +159,32 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuItemFormularioMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemFormularioMateriaActionPerformed
-      Materia Fmateria = new Materia();
+      MateriaVista Fmateria = new MateriaVista();
       Escritorio.add(Fmateria);
       Fmateria.show();
     }//GEN-LAST:event_MenuItemFormularioMateriaActionPerformed
 
     private void MenuItemFormularioAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemFormularioAlumnoActionPerformed
-       Alumno Falumno = new Alumno();
+       AlumnoVista Falumno = new AlumnoVista();
        Escritorio.add(Falumno);
        Falumno.show();
         
     }//GEN-LAST:event_MenuItemFormularioAlumnoActionPerformed
 
     private void jMenuItemInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInscripcionesActionPerformed
-       ListadoMateria LMateria = new ListadoMateria();
+       ListadoMateriaVista LMateria = new ListadoMateriaVista();
        Escritorio.add(LMateria);
        LMateria.show();
     }//GEN-LAST:event_jMenuItemInscripcionesActionPerformed
 
     private void jMenuItemNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNotasActionPerformed
-      Notas LNotas = new Notas();
+      NotasVista LNotas = new NotasVista();
       Escritorio.add(LNotas);
       LNotas.show();
     }//GEN-LAST:event_jMenuItemNotasActionPerformed
 
     private void JMenuItemAlumnosXmateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAlumnosXmateriaActionPerformed
-     Consultas AlumnoPorMateria = new Consultas();
+     ConsultasVista AlumnoPorMateria = new ConsultasVista();
      Escritorio.add(AlumnoPorMateria);
      AlumnoPorMateria.show();
     }//GEN-LAST:event_JMenuItemAlumnosXmateriaActionPerformed
