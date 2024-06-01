@@ -19,17 +19,17 @@ import javax.swing.JOptionPane;
  */
 public class InscripcionData {
     private Connection con =null;
-    private MateriaData materia;
-    private AlumnoData alumno;
+    private MateriaData materia=new MateriaData();
+    private AlumnoData alumno= new AlumnoData();
     
     public InscripcionData(){
         con=Conexion.getConexion();
     }
     
     public void guardarInscripcion(Inscripcion inscripcion){
-        String sql="INSERT INTO `inscripcion`(`nota`, `id_alumno`, `id_materia`) VALUES ('?,?,?')";
+        String sql="INSERT INTO `inscripcion`(`nota`, `id_alumno`, `id_materia`) VALUES (?,?,?)";
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
+            PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, inscripcion.getNota());
             ps.setInt(2, inscripcion.getAlumno().getId_alumno());
             ps.setInt(3, inscripcion.getMateria().getId_materia());
@@ -39,9 +39,9 @@ public class InscripcionData {
                 inscripcion.setId_inscripcion(rs.getInt("id_inscripcion"));
                 JOptionPane.showMessageDialog(null, "Inscripcion añadida con exito");
             }
-            
+            ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Inscripcion");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Inscripcion "+e.getMessage());
         }
     }
     
@@ -93,7 +93,7 @@ public class InscripcionData {
         List<Materia> materias = new ArrayList<Materia>();
         try {
         String sql = "SELECT inscripcion.id_materia, nombre, año FROM inscripcion ,"
-                + "materia WHERE inscripcion.id_materia= materia.id_materia/n"
+                + "materia WHERE inscripcion.id_materia= materia.id_materia "
                 + "AND inscripcion.id_alumno = ?;";
         
             PreparedStatement ps = con.prepareStatement(sql);
@@ -127,6 +127,7 @@ public class InscripcionData {
              mate.setId_materia(rs.getInt("id_materia"));
              mate.setNombre(rs.getString("nombre"));
              mate.setAño(rs.getInt("año"));
+             mate.setEstado(rs.getBoolean("estado"));
              materias.add(mate);
             }
             ps.close();
