@@ -65,7 +65,6 @@
                           <Component id="JTFapellido" pref="110" max="32767" attributes="0"/>
                           <Component id="JTFdocumento" pref="110" max="32767" attributes="0"/>
                           <Component id="JTFnombre" alignment="0" pref="110" max="32767" attributes="0"/>
-                          <Component id="jDfechaNac" alignment="0" max="32767" attributes="0"/>
                           <Component id="jCestado" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -100,12 +99,9 @@
                   <Component id="jLabelEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jCestado" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabelFechaNac" min="-2" max="-2" attributes="0"/>
-                  <Component id="jDfechaNac" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <Component id="jLabelFechaNac" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -202,8 +198,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuscarActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDfechaNac">
     </Component>
     <Component class="javax.swing.JCheckBox" name="jCestado">
     </Component>

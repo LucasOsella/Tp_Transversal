@@ -50,7 +50,6 @@ public class AlumnoVista extends javax.swing.JInternalFrame {
         jButtonGuardar = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
         jButtonBuscar = new javax.swing.JButton();
-        jDfechaNac = new com.toedter.calendar.JDateChooser();
         jCestado = new javax.swing.JCheckBox();
 
         jToggleButton1.setText("jToggleButton1");
@@ -152,7 +151,6 @@ public class AlumnoVista extends javax.swing.JInternalFrame {
                             .addComponent(JTFapellido, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(JTFdocumento, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                             .addComponent(JTFnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(jDfechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCestado))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -178,11 +176,9 @@ public class AlumnoVista extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEstado)
                     .addComponent(jCestado))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelFechaNac)
-                    .addComponent(jDfechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
+                .addComponent(jLabelFechaNac)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonNuevo)
                     .addComponent(jButtonSalir)
@@ -259,7 +255,6 @@ public class AlumnoVista extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonNuevo;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JCheckBox jCestado;
-    private com.toedter.calendar.JDateChooser jDfechaNac;
     private javax.swing.JLabel jLabelApellido;
     private javax.swing.JLabel jLabelDocumento;
     private javax.swing.JLabel jLabelEstado;
