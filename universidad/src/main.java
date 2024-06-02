@@ -55,7 +55,7 @@ public class main {
       Inscripcion ins= new Inscripcion(0,lucas,mate);
       InscripcionData insD= new InscripcionData();
       //insD.guardarInscripcion(ins);
-      //insD.actualizarNota(1, 1, 8);
+//      insD.actualizarNota(1, 1, 9);
       List <Materia> materias = insD.obtenerMateriasNoCursadas(1);
         for (Materia materia : materias) {
             System.out.println(materia);

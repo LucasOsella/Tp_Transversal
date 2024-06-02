@@ -88,7 +88,7 @@ public class NotasVista extends javax.swing.JInternalFrame {
     
         Alumno selec = (Alumno) jCBAlumnos.getSelectedItem();
         List<Materia> lista = inscData.obtenerMateriasCursadas(selec.getId_alumno());
-        List<Inscripcion> ins = inscData.obtenerInscripciones();
+        List<Inscripcion> ins = inscData.obtenerInscripcionesPorAlumno(selec.getId_alumno());
         for (Materia materia : lista) {
             for (Inscripcion in : ins) {
                    modelo.addRow(new Object[]{materia.getId_materia(),materia.getNombre(),in.getNota()});
@@ -153,6 +153,11 @@ public class NotasVista extends javax.swing.JInternalFrame {
         });
 
         jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,13 +167,14 @@ public class NotasVista extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(133, 133, 133)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1)
+                        .addGap(0, 170, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel2)
                         .addGap(34, 34, 34)
-                        .addComponent(jCBAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .addComponent(jCBAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -189,7 +195,7 @@ public class NotasVista extends javax.swing.JInternalFrame {
                     .addComponent(jCBAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGuardar)
                     .addComponent(jButtonSalir))
@@ -204,8 +210,8 @@ public class NotasVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCBAlumnosActionPerformed
 
     private void jCBAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBAlumnosItemStateChanged
-        cargarMaterias();
-        borrarFilas();
+         borrarFilas();
+        cargarMaterias();      
      
     }//GEN-LAST:event_jCBAlumnosItemStateChanged
 //Guardar notas.
@@ -217,11 +223,16 @@ public class NotasVista extends javax.swing.JInternalFrame {
       int idAlumno = aluselect.getId_alumno();
         for (int i = 0; i < jTListamaterias.getRowCount();i++) {
             int idmateria = (int) jTListamaterias.getValueAt(i,0);
-            double nota = (double) jTListamaterias.getValueAt(i,2);
-            
+            int nota = Integer.parseInt((String)jTListamaterias.getValueAt(i,2));
+
            inscData.actualizarNota(idAlumno, idmateria, nota);
         }
     }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

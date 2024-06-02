@@ -6,15 +6,58 @@
 
 package Vistas;
 
+import AccesosDatos.AlumnoData;
+import AccesosDatos.InscripcionData;
+import AccesosDatos.MateriaData;
+import Entidades.Alumno;
+import Entidades.Materia;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Juan fua el Diego
  */
 public class ConsultasVista extends javax.swing.JInternalFrame {
+private DefaultTableModel modelo = new DefaultTableModel();
+private List<Materia>materias;
+private List<Alumno>alumnos;
+private AlumnoData almD;
+private MateriaData mtd;
+private InscripcionData insD;
 
     /** Creates new form AlumnosPorMateria */
     public ConsultasVista() {
         initComponents();
+        almD=new AlumnoData();
+        mtd=new MateriaData();
+        insD=new InscripcionData();
+        armarLista();
+        alumnos=almD.listarAlumno();
+        materias=mtd.listarMateria();
+        
+        cargarMaterias();
+    }
+       private void cargarMaterias() {
+        for (Materia item:materias) {
+            jCMaterias.addItem(item);            
+        }
+    }
+       
+        private void borrarFilas(){
+        int filas = jTAlumnos.getRowCount() - 1;
+        
+        for(int f = filas; f >= 0; f-- ){
+            modelo.removeRow(f);
+        }
+    }
+        
+         private void armarLista() {
+        modelo.addColumn("ID");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nombre");
+        jTAlumnos.setModel(modelo);             
     }
 
     /** This method is called from within the constructor to
@@ -26,22 +69,98 @@ public class ConsultasVista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTAlumnos = new javax.swing.JTable();
+        jCMaterias = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Listado de Alumno por Materia");
+
+        jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTAlumnos);
+
+        jCMaterias.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCMateriasItemStateChanged(evt);
+            }
+        });
+
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(jCMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jCMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(jButton1))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jCMateriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCMateriasItemStateChanged
+        // TODO add your handling code here:
+       borrarFilas();
+       cargarAlumnos();
+    }//GEN-LAST:event_jCMateriasItemStateChanged
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cargarAlumnos(){
+         Materia materias=(Materia) jCMaterias.getSelectedItem();
+        List<Alumno>alumnos=insD.obtenerAlumnosxMateria(materias.getId_materia());
+        
+        for (Alumno alumno : alumnos) {
+            modelo.addRow(new Object[]{alumno.getId_alumno(),alumno.getDni(),alumno.getApellido(),alumno.getNombre()});
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<Materia> jCMaterias;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTAlumnos;
     // End of variables declaration//GEN-END:variables
 
 }

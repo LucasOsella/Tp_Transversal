@@ -24,15 +24,16 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="170" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="jCBAlumnos" min="-2" pref="187" max="-2" attributes="0"/>
+                      <Component id="jCBAlumnos" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="61" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -59,7 +60,7 @@
               </Group>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="91" max="-2" attributes="0"/>
-              <EmptySpace pref="100" max="32767" attributes="0"/>
+              <EmptySpace pref="104" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -130,6 +131,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalirActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
