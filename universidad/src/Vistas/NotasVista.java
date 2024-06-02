@@ -13,6 +13,7 @@ import Entidades.Inscripcion;
 import Entidades.Materia;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -145,6 +146,11 @@ public class NotasVista extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTListamaterias);
 
         jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
 
         jButtonSalir.setText("Salir");
 
@@ -202,6 +208,20 @@ public class NotasVista extends javax.swing.JInternalFrame {
         borrarFilas();
      
     }//GEN-LAST:event_jCBAlumnosItemStateChanged
+//Guardar notas.
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+      Alumno aluselect = (Alumno) jCBAlumnos.getSelectedItem();
+      if(aluselect == null){
+          JOptionPane.showMessageDialog(null,"Seleccione un alumno");
+      }
+      int idAlumno = aluselect.getId_alumno();
+        for (int i = 0; i < jTListamaterias.getRowCount();i++) {
+            int idmateria = (int) jTListamaterias.getValueAt(i,0);
+            double nota = (double) jTListamaterias.getValueAt(i,2);
+            
+           inscData.actualizarNota(idAlumno, idmateria, nota);
+        }
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
